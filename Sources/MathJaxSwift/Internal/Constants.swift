@@ -28,7 +28,7 @@ import Foundation
 internal struct Constants {
   
   /// The version of MathJax that the package expects.
-  static let expectedMathJaxVersion = "3.2.2"
+  static let expectedMathJaxVersion = "4.0.0-beta.6"
   
   struct Names {
     

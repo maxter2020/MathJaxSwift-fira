@@ -19,7 +19,8 @@
   "author": "Colin Campbell",
   "license": "MIT",
   "dependencies": {
-    "mathjax-full": "^3.2.2"
+    "mathjax-bonum-font": "^4.0.0-beta.6",
+    "mathjax-full": "4.0.0-beta.6"
   },
   "devDependencies": {
     "webpack": "^5.76.0",
