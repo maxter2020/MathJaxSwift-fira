@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@mathjax/mathjax-fira-font": "^0.4.2-beta.8"
+  }
+}
