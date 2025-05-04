@@ -11,7 +11,8 @@ const {TeX} = require('mathjax-full/js/input/tex.js');
 
 const {AllPackages} = require('mathjax-full/js/input/tex/AllPackages.js');
 
-// No need to import the font directly
+// Simply import the Fira font for SVG
+require('mathjax-fira-font/svg.js');
 
 const CSS = [
   'svg a{fill:blue;stroke:blue}',
@@ -96,10 +97,9 @@ export class SVGConverter {
     if (assistiveMml) AssistiveMmlHandler(handler);
     documentOptions.InputJax = inputJax;
     
-    // Set Fira font configuration for SVG
+    // Set font family to Fira
     if (!svgOptions) svgOptions = {};
     svgOptions.fontFamily = 'Fira';
-    svgOptions.fontCache = 'global';
     
     documentOptions.OutputJax = new SVG(svgOptions);
     
