@@ -11,6 +11,8 @@ const {TeX} = require('mathjax-full/js/input/tex.js');
 
 const {AllPackages} = require('mathjax-full/js/input/tex/AllPackages.js');
 
+// No need to import the font directly
+
 const CSS = [
   'svg a{fill:blue;stroke:blue}',
   '[data-mml-node="merror"]>g{fill:red;stroke:red}',
@@ -93,17 +95,22 @@ export class SVGConverter {
     
     if (assistiveMml) AssistiveMmlHandler(handler);
     documentOptions.InputJax = inputJax;
+    
+    // Set Fira font configuration for SVG
+    if (!svgOptions) svgOptions = {};
+    svgOptions.fontFamily = 'Fira';
+    svgOptions.fontCache = 'global';
+    
     documentOptions.OutputJax = new SVG(svgOptions);
     
     const html = mathjax.document('', documentOptions);
     const node = html.convert(input || '', conversionOptions);
     
     if (css) {
-      return adaptor.textContent(svg.styleSheet(html));
+      return adaptor.textContent(html.outputJax.styleSheet(html));
     } else {
       let html = (container ? adaptor.outerHTML(node) : adaptor.innerHTML(node));
       return styles ? html.replace(/<defs>/, `<defs><style>${CSS}</style>`) : html;
     }
   }
-  
 }
